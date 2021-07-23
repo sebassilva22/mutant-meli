@@ -1,0 +1,157 @@
+---
+swagger: "2.0"
+info:
+  description: "Api rest para exponer el servicio de selección de mutantes en el challenge\
+    \ de MELI"
+  version: "2021-07-22T19:31:59Z"
+  title: "MutantMeli-v1"
+basePath: "/v1"
+schemes:
+- "https"
+paths:
+  /mutant:
+    post:
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        "403":
+          description: "403 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: 
+          Fn::Sub: 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MutantClasifier.Arn}/invocations'
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            responseTemplates:
+              application/json: "#set($res = $input.path('$.body'))\n{\n    \"message\"\
+                \ : $input.json('$.body'),\n    \"statusCode\": $input.json('$.statusCode'),\n\
+                \    \"detail\" : \"Is mutant, was save in database.\"\n}"
+          "400":
+            statusCode: "400"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            responseTemplates:
+              application/json: "#set($cause = $input.path('$.cause'))\r\n{\r\n  \
+                \  \"message\": $cause.errorMessage,\r\n    \"statusCode\" : $input.path('$.errorMessage')\r\
+                \n}"
+          "403":
+            statusCode: "403"
+            responseTemplates:
+              application/json: "#set($cause = $input.path('$.cause'))\n{\n  \"message\"\
+                \ : $cause.errorMessage,\n  \"statusCode\": $input.path('$.errorMessage'),\n\
+                \  \"detail\" : \"Not is mutant, is a human.\"\n}"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+  /stats:
+    get:
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "200 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        "400":
+          description: "400 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+        "403":
+          description: "403 response"
+          schema:
+            $ref: "#/definitions/Empty"
+          headers:
+            Access-Control-Allow-Origin:
+              type: "string"
+            Access-Control-Allow-Methods:
+              type: "string"
+            Access-Control-Allow-Headers:
+              type: "string"
+      x-amazon-apigateway-integration:
+        type: "aws"
+        httpMethod: "POST"
+        uri: 
+          Fn::Sub: 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${MutantStats.Arn}/invocations'
+        responses:
+          default:
+            statusCode: "200"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            responseTemplates:
+              application/json: "#set($res = $input.path('$.body'))\n{\n    \"message\"\
+                \ : $input.json('$.body'),\n    \"statusCode\": $input.json('$.statusCode')"
+          "400":
+            statusCode: "400"
+            responseParameters:
+              method.response.header.Access-Control-Allow-Methods: "'*'"
+              method.response.header.Access-Control-Allow-Headers: "'*'"
+              method.response.header.Access-Control-Allow-Origin: "'*'"
+            responseTemplates:
+              application/json: "#set($cause = $input.path('$.cause'))\r\n{\r\n  \
+                \  \"message\": $cause.errorMessage,\r\n    \"statusCode\" : $input.path('$.errorMessage')\r\
+                \n}"
+          "403":
+            statusCode: "403"
+            responseTemplates:
+              application/json: "#set($cause = $input.path('$.cause'))\n{\n  \"message\"\
+                \ : $cause.errorMessage,\n  \"statusCode\": $input.path('$.errorMessage')"
+        passthroughBehavior: "when_no_match"
+        contentHandling: "CONVERT_TO_TEXT"
+definitions:
+  Empty:
+    type: "object"
+    title: "Empty Schema"

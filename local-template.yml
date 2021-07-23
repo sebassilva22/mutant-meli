@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+
+Globals:
+    Function:
+        Timeout: 120
+        MemorySize: 1024
+
+Resources:  
+  MutantClasifier:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Runtime: java8.al2
+      Handler: com.meli.mutant.handler.Mutant::handleRequest
+      MemorySize: 512
+      #AutoPublishAlias: "production"
+      Timeout: 60

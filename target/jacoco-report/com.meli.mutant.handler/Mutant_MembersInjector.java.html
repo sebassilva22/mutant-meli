@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mutant_MembersInjector.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">mutant-challenge</a> &gt; <a href="index.source.html" class="el_package">com.meli.mutant.handler</a> &gt; <span class="el_source">Mutant_MembersInjector.java</span></div><h1>Mutant_MembersInjector.java</h1><pre class="source lang-java linenums">package com.meli.mutant.handler;
+
+import com.meli.mutant.dal.dao.IMutantDao;
+import dagger.MembersInjector;
+import dagger.internal.DaggerGenerated;
+import dagger.internal.InjectedFieldSignature;
+import javax.annotation.Generated;
+import javax.inject.Provider;
+
+@DaggerGenerated
+@Generated(
+    value = &quot;dagger.internal.codegen.ComponentProcessor&quot;,
+    comments = &quot;https://dagger.dev&quot;
+)
+@SuppressWarnings({
+    &quot;unchecked&quot;,
+    &quot;rawtypes&quot;
+})
+public final class Mutant_MembersInjector implements MembersInjector&lt;Mutant&gt; {
+  private final Provider&lt;IMutantDao&gt; mutantDaoProvider;
+
+<span class="nc" id="L22">  public Mutant_MembersInjector(Provider&lt;IMutantDao&gt; mutantDaoProvider) {</span>
+<span class="nc" id="L23">    this.mutantDaoProvider = mutantDaoProvider;</span>
+<span class="nc" id="L24">  }</span>
+
+  public static MembersInjector&lt;Mutant&gt; create(Provider&lt;IMutantDao&gt; mutantDaoProvider) {
+<span class="nc" id="L27">    return new Mutant_MembersInjector(mutantDaoProvider);</span>
+  }
+
+  @Override
+  public void injectMembers(Mutant instance) {
+<span class="nc" id="L32">    injectMutantDao(instance, mutantDaoProvider.get());</span>
+<span class="nc" id="L33">  }</span>
+
+  @InjectedFieldSignature(&quot;com.meli.mutant.handler.Mutant.mutantDao&quot;)
+  public static void injectMutantDao(Mutant instance, IMutantDao mutantDao) {
+<span class="fc" id="L37">    instance.mutantDao = mutantDao;</span>
+<span class="fc" id="L38">  }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.meli.mutant.handler.MutantTest
--------------------------------------------------------------------------------
-Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.692 s - in com.meli.mutant.handler.MutantTest

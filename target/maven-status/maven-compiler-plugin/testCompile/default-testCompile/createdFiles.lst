@@ -1,7 +1,0 @@
-com\meli\mutant\handler\GatewayResponseMetadata.class
-com\meli\mutant\handler\MutantTest.class
-com\meli\mutant\handler\GatewayResponseMetadataStats.class
-com\meli\mutant\handler\OutputStreamT.class
-com\meli\mutant\AppTest.class
-com\meli\mutant\handler\StatsTest.class
-com\meli\mutant\evaluate\EvaluateMutantTest.class

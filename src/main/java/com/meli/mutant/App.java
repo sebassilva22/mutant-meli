@@ -15,8 +15,8 @@ public class App
     public static void main( String[] args ) throws DnaException{
         logger.setLevel(Level.ALL);
         EvaluateMutant evaluateMutant =  new EvaluateMutant();
-//        String[] dna = {"ACCCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
-        String[] dna = {"TTTTTT","TTTTTT","TTTTTT","TTTTTT","TTTTT ","TTTTTT"};
+        String[] dna = {"ACCCGA","CAGTGC","TTATGT","AGAAGG","CCCCTA","TCACTG"};
+//        String[] dna = {"TTTTTT","TTTTTT","TTTTTT","TTTTTT","TTTTT ","TTTTTT"};
 //        String[] dna = {"T     "," T    ","      ","      ","      ","      "};
         if(args != null && args.length > 0) {
         	dna = args;

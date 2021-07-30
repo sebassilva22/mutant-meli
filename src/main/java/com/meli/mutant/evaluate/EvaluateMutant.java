@@ -9,7 +9,7 @@ import com.meli.mutant.exception.DnaException;
 public class EvaluateMutant {
 
     private String[][] matrix;
-    private static final Pattern PATTERN = Pattern.compile("[^ATCG,\\[\\]\\s]");
+    private static final Pattern PATTERN = Pattern.compile("[^ATCG,\\[\\]]");
     private boolean horizontal;
     private boolean vertical;
     private boolean oblique;
@@ -80,7 +80,7 @@ public class EvaluateMutant {
     }
 
     private boolean evaluateChainDna(String[] array) {
-        return PATTERN.matcher(Arrays.toString(array)).find();
+        return PATTERN.matcher(Arrays.toString(array).trim().replaceAll(", ", ",")).find();
     }
     
     public String[][] getMatrix() {

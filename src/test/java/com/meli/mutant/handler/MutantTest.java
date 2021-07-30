@@ -12,7 +12,6 @@ import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -23,8 +22,6 @@ import com.meli.mutant.exception.DnaException;
 
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.PutItemRequest;
-import software.amazon.awssdk.services.dynamodb.model.ResourceNotFoundException;
-import software.amazon.awssdk.services.dynamodb.model.ScanRequest;
 
 
 class MutantTest {
@@ -71,11 +68,11 @@ class MutantTest {
 		});
 	}
 
-	@Test
-	public void handlerRequest() throws IOException {
-		mutant = new Mutant();
-		Assertions.assertNotNull(mutant);
-	}
+//	 @Test
+//	 public void handlerRequest() throws IOException {
+//	 	mutant = new com.meli.mutant.handler.Mutant();
+//	 	Assertions.assertNotNull(mutant);
+//	 }
 	
 	@Test
 	public void registerMutanDaoImplTest() throws DnaException {

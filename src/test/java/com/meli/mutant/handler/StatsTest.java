@@ -10,10 +10,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -21,7 +19,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meli.mutant.dal.dao.IMutantDao;
 import com.meli.mutant.dal.dao.MutantDaoImpl;
 import com.meli.mutant.exception.DnaException;
-import com.meli.mutant.model.GatewayResponse;
 import com.meli.mutant.model.Statistics;
 
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
@@ -60,11 +57,11 @@ class StatsTest {
 
 	}
 
-	@Test
-	public void handlerRequest() throws IOException {
-		stats = new Stats();
-		Assertions.assertNotNull(stats);
-	}
+	// @Test
+	// public void handlerRequest() throws IOException {
+	// 	stats = new Stats();
+	// 	Assertions.assertNotNull(stats);
+	// }
 
 	@Test
 	public void handlerRequestInvalidData() throws IOException, DnaException {
